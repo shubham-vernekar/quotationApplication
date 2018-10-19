@@ -62,15 +62,15 @@ class FormOne(QtGui.QWidget):
         self.textBoxCAddress = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         vert+=33
-        self.label_AName = self.createLabel([horiz+5,vert+30],[180,20],"Agent Name:",Bebas)
+        self.label_AName = self.createLabel([horiz+5,vert+30],[180,25],"Agent Name:",Bebas)
         self.textBoxAName = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         vert+=33
-        self.label_APost = self.createLabel([horiz+5,vert+30],[180,20],"Agent Post:",Bebas)
+        self.label_APost = self.createLabel([horiz+5,vert+30],[180,25],"Agent Post:",Bebas)
         self.textBoxAPost = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         vert+=33
-        self.label_AMobile = self.createLabel([horiz+5,vert+30],[180,20],"Agent Ph No.:",Bebas)
+        self.label_AMobile = self.createLabel([horiz+5,vert+30],[180,25],"Agent Ph No.:",Bebas)
         self.textBoxAMobile = self.createTextBox((horiz+180,vert+27),(230,25),"")
         self.textBoxAMobile.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[- \d]+")))
 
@@ -286,7 +286,7 @@ class BlocksOrder(QtGui.QWidget):
     def __init__(self, inData,isPrint, parent=None):
         super(BlocksOrder, self).__init__(parent)
         horiz=44
-        vert=50
+        vert=40
         self.basecolor="efefef"
         # self.inData=inData
         # self.isPrint=isPrint
@@ -309,19 +309,19 @@ class BlocksOrder(QtGui.QWidget):
         self.__mousePressPos = None
         self.__mouseMovePos = None
 
-        self.textlable = self.createLabel((horiz+8, vert),(250,30),"Blocks",Alwyn)
-        vert+=65
-        self.label_BlockSize = self.createLabel((horiz+8,vert),(90,20),"Blocks Size:",Bebas)
-        self.combo_BlockSize=self.createCombobox((horiz+130,vert-3),(120,27),["200 x 625","250 x 625","240 x 650"])
+        self.textlable = self.createLabel((horiz+80, vert),(250,40),"Blocks",Alwyn)
+        vert+=75
+        self.label_BlockSize = self.createLabel((horiz,vert),(180,20),"Blocks Size:",Bebas)
+        self.combo_BlockSize=self.createCombobox((horiz+190,vert-3),(120,27),["200 x 625","250 x 625","240 x 650"])
 
-        vert+=35
-        self.label_TruckVol = self.createLabel((horiz+8,vert),(120,20),"Truck Volume:",Bebas)
-        self.combo_TruckVol=self.createCombobox((horiz+130,vert-3),(120,27),["15 cum","21 cum","24 cum","28 cum","30 cum"])
+        vert+=40
+        self.label_TruckVol = self.createLabel((horiz,vert),(180,20),"Truck Volume:",Bebas)
+        self.combo_TruckVol=self.createCombobox((horiz+190,vert-3),(120,27),["15 cum","21 cum","24 cum","28 cum","30 cum"])
 
         buttonCSS="color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 80px;background-color: rgb(255, 255,255);"
         
         vert+=60
-        self.okbutton = self.createButton("Generate",(horiz+85, vert) ,(60,30),lambda:self.genPDF(inData,isPrint),css=buttonCSS)
+        self.okbutton = self.createButton("Generate",(horiz+105, vert) ,(60,30),lambda:self.genPDF(inData,isPrint),css=buttonCSS)
   
         layout = QtGui.QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -329,13 +329,13 @@ class BlocksOrder(QtGui.QWidget):
         layout.addWidget(QtGui.QSizeGrip(self), 0,
                          QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
 
-        self.exitButton = self.createButton("",(315, 21),(15,15),self.closeUI,"background-color:  rgb(239,239,239)")
+        self.exitButton = self.createButton("",(345, 21),(15,15),self.closeUI,"background-color:  rgb(239,239,239)")
         self.exitButton.setIcon(QtGui.QIcon("Images/57165-cross-sign.png"))
         self.exitButton.setIconSize(QtCore.QSize(19,19))
         self.exitButton.setFlat(True)
 
-        self.setMinimumSize(355, vert+75)
-        self.setMaximumSize(355, vert+75)
+        self.setMinimumSize(400, vert+75)
+        self.setMaximumSize(400, vert+75)
 
     def closeUI(self):
         self.close()
@@ -455,46 +455,43 @@ class getOrder(QtGui.QWidget):
         self.__mouseMovePos = None
 
         self.textlable = self.createLabel((horiz+8, vert),(250,30),categ,Alwyn)
-        vert+=50
+        vert+=60
         validator_Amt = QtGui.QRegExpValidator(QtCore.QRegExp("[\d]{,4}"))
         self.textlable = self.createLabel((horiz-10, vert+3),(200,30),"Size of "+categ+" :",Bebas)
-        self.textbox_t = self.createTextBox((horiz+155, vert+3),(40,25))
-        self.textbox_b = self.createTextBox((horiz+218, vert+3),(40,25))
-        self.textbox_l = self.createTextBox((horiz+281, vert+3),(40,25))
+        self.textbox_t = self.createTextBox((horiz+155+60, vert+3),(40,25))
+        self.textbox_b = self.createTextBox((horiz+218+75, vert+3),(40,25))
+        self.textbox_l = self.createTextBox((horiz+281+85, vert+3),(40,25))
         self.textbox_t.setValidator(validator_Amt)
         self.textbox_b.setValidator(validator_Amt)
         self.textbox_l.setValidator(validator_Amt)
-        self.label_t = self.createLabel((horiz+146, vert+28),(60,25),"THICKNESS",Queen)
-        self.label_t = self.createLabel((horiz+216, vert+28),(60,25),"BREADTH",Queen)
-        self.label_t = self.createLabel((horiz+283, vert+28),(60,25),"LENGTH",Queen)
-        self.textbox_cross = self.createLabel((horiz+203, vert+3),(20,25),"x",Queen)
-        self.textbox_cross = self.createLabel((horiz+266, vert+3),(20,25),"x",Queen)
-        vert+=60
-        self.textlable = self.createLabel((horiz-10, vert),(200,30),"Quantity Required :",Bebas)
-        self.textbox_req = self.createTextBox((horiz+155, vert+3),(70,25))
+        self.label_t = self.createLabel((horiz+146+50, vert+28),(100,25),"THICKNESS",Queen)
+        self.label_t = self.createLabel((horiz+216+70, vert+28),(80,25),"BREADTH",Queen)
+        self.label_t = self.createLabel((horiz+283+78, vert+28),(80,25),"LENGTH",Queen)
+        self.textbox_cross = self.createLabel((horiz+203+65, vert+3),(20,25),"x",Queen)
+        self.textbox_cross = self.createLabel((horiz+266+78, vert+3),(20,25),"x",Queen)
+        vert+=75
+        self.textlable = self.createLabel((horiz-10, vert),(250,30),"Quantity Required :",Bebas)
+        self.textbox_req = self.createTextBox((horiz+240, vert+3),(75,25))
         self.textbox_req.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[\d]{,6}")))
         buttonCSS="color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 80px;background-color: rgb(255, 255,255);"
-        self.addButton = self.createButton("ADD",(horiz+250, vert),(40,30),self.addData,"color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 40px;background-color: rgb(255, 255,255);")
+        self.addButton = self.createButton("ADD",(horiz+345, vert),(40,30),self.addData,"color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 40px;background-color: rgb(255, 255,255);")
 
         self.table = QtGui.QTableWidget(self)
         self.table.setColumnCount(4)
-        #self.table.setRowCount(20)
         self.table.setStyle(QtGui.QStyleFactory.create("cleanlooks"))
         self.table.setHorizontalHeaderLabels(["Thickness","Breadth","Length","Quantity"])
         self.table.setItemDelegate(ValidatedItemDelegate())
-        #self.table.setVerticalHeaderLabels([])
-        # self.table.setItem(0,0, QtGui.QTableWidgetItem("Item (1,1)"))
-        self.table.resize(261,148)#(285,148)
+        self.table.resize(344,160)
         self.table.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.table.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.table.move(horiz+22, vert+70)
         
         
-        [self.table.setColumnWidth(x,65) for x in xrange(4)]
+        [self.table.setColumnWidth(x,86) for x in xrange(4)]
         
         vert+=250
 
-        self.okbutton = self.createButton("Generate",(horiz+110, vert) ,(60,30),lambda:self.genPDF(inData,isPrint),css=buttonCSS)
+        self.okbutton = self.createButton("Generate",(horiz+145, vert+10) ,(60,30),lambda:self.genPDF(inData,isPrint),css=buttonCSS)
   
         layout = QtGui.QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -502,22 +499,22 @@ class getOrder(QtGui.QWidget):
         layout.addWidget(QtGui.QSizeGrip(self), 0,
                          QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
 
-        self.exitButton = self.createButton("",(340, 21),(15,15),self.closeUI,"background-color:  rgb(239,239,239)")
+        self.exitButton = self.createButton("",(410, 21),(15,15),self.closeUI,"background-color:  rgb(239,239,239)")
         self.exitButton.setIcon(QtGui.QIcon("Images/57165-cross-sign.png"))
         self.exitButton.setIconSize(QtCore.QSize(19,19))
         self.exitButton.setFlat(True)
 
-        self.setMinimumSize(395, vert+75)
-        self.setMaximumSize(395, vert+75)
+        self.setMinimumSize(480, vert+75)
+        self.setMaximumSize(480, vert+75)
 
     def addData(self):
         rowCount=self.table.rowCount()
         self.table.setRowCount(rowCount+1)
-        self.table.resize(277,148)
+        self.table.resize(368,180)
         self.table.move(58,230)
         for k,i in enumerate([self.textbox_t.text(),self.textbox_b.text(),self.textbox_l.text(),self.textbox_req.text()]):
             self.table.setItem(rowCount,k, QtGui.QTableWidgetItem(i))
-        [self.table.setRowHeight(x,20) for x in xrange(rowCount+1)]
+        [self.table.setRowHeight(x,28) for x in xrange(rowCount+1)]
         self.table.scrollToBottom()
 
     def closeUI(self):
@@ -607,7 +604,7 @@ class MsgBox(QtGui.QWidget):
     def __init__(self, color,text, parent=None):
         super(MsgBox, self).__init__(parent)
         horiz=44
-        vert=45
+        vert=55
 
         # fonts
         QtGui.QFontDatabase.addApplicationFont('Fonts/Queen of Camelot.ttf')
@@ -627,12 +624,14 @@ class MsgBox(QtGui.QWidget):
         self.__mousePressPos = None
         self.__mouseMovePos = None
 
-        self.textlable = self.createLabel((horiz, vert-30),(200,30),text,Queen)
+
+
+        self.textlable = self.createLabel((horiz+5, vert-30),(350,30),text,Queen)
         #buttonCSS="color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 80px;background-color: rgb(255, 255,255);"
         buttonCSS="""color: #333;border: 2px solid #555;border-radius: 11px;padding: 5px;background: qradialgradient(cx: 0.3, cy: -0.4,
         fx: 0.3, fy: -0.4,radius: 1.35, stop: 0 #fff, stop: 1 #888);min-width: 80px;"""
 
-        self.okbutton = self.createButton("OK",(horiz+33, vert+8) ,(60,30),self.closeP,css=buttonCSS)
+        self.okbutton = self.createButton("OK",(horiz+83, vert+8) ,(60,30),self.closeP,css=buttonCSS)
   
         layout = QtGui.QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -640,8 +639,8 @@ class MsgBox(QtGui.QWidget):
         layout.addWidget(QtGui.QSizeGrip(self), 0,
                          QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
 
-        self.setMinimumSize(250, 100)
-        self.setMaximumSize(250, 100)
+        self.setMinimumSize(350, 120)
+        self.setMaximumSize(350, 120)
 
     def createLabel(self,pos,size,data,font):
         label = QtGui.QLabel(data,self)

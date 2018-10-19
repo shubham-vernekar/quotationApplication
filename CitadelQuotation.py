@@ -14,8 +14,8 @@ def createPDF(Filename,AllData,prnt,Rate,TransInc,TransVal=0):
     if True:#try:
         horiz=45
         vert=760
-        pdfmetrics.registerFont(TTFont('Calibri','Fonts\Calibri.ttf'))
-        pdfmetrics.registerFont(TTFont('CalibriBold','Fonts\Calibri Bold.ttf'))
+        pdfmetrics.registerFont(TTFont('Calibri','Fonts/Calibri.ttf'))
+        pdfmetrics.registerFont(TTFont('CalibriBold','Fonts/Calibri Bold.ttf'))
         c = canvas.Canvas(Filename,pagesize=A4)
         c.setTitle("Quotation from Citadel")
         Type=AllData["Type"]
@@ -23,7 +23,7 @@ def createPDF(Filename,AllData,prnt,Rate,TransInc,TransVal=0):
         x=createTextBox(c,"To,",horiz, x-20,"0x000000",'CalibriBold',11)
         x=createTextBox(c,AllData["Client Name"],horiz, x-4,"0x000000",'CalibriBold',11)
         xt=createTextBox(c,AllData["Client Address"],horiz, x-4,"0x000000",'Calibri',11)
-        logo = ImageReader('CitadelLogo.png')
+        logo = ImageReader('Images/CitadelLogo.png')
         if prnt:
             c.drawImage(logo, horiz+360, vert-70, width=120,height=80,mask='auto')
 
