@@ -22,15 +22,15 @@ class FormOne(QtGui.QWidget):
     def __init__(self, parent=None):
         super(FormOne, self).__init__(parent)
         horiz=35
-        vert=50
+        vert=65
         now = datetime.now()
         self.basecolor="efefef"
         # fonts
-        QtGui.QFontDatabase.addApplicationFont('Fonts\Alwyn Bold.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/Alwyn Bold.ttf')
         Alwyn = QtGui.QFont("Alwyn Bold", 23) 
-        QtGui.QFontDatabase.addApplicationFont('Fonts\MavenProBold.otf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/MavenProBold.otf')
         Bebas = QtGui.QFont("MavenProBold", 11) #, QFont.Bold
-        QtGui.QFontDatabase.addApplicationFont('Fonts\MavenProBold.otf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/MavenProBold.otf')
         BebasSmall = QtGui.QFont("MavenProBold", 9)
 
         # make the window frameless
@@ -46,72 +46,72 @@ class FormOne(QtGui.QWidget):
         self.__mousePressPos = None
         self.__mouseMovePos = None
 
-        self.label_Title = self.createLabel([horiz+10,vert],[300,80],"Citadel Ecobuild",Alwyn)
+        self.label_Title = self.createLabel([horiz+10,vert],[400,80],"Citabell Ecobuild",Alwyn)
 
         vert+=60
-        self.label_CName = self.createLabel([horiz+5,vert+30],[90,20],"Client Name:",Bebas)
-        self.textBoxCName = self.createTextBox((horiz+120,vert+27),(212,25),"")
+        self.label_CName = self.createLabel([horiz+5,vert+30],[180,20],"Client Name:",Bebas)
+        self.textBoxCName = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         vert+=33
-        self.label_AddrTo = self.createLabel([horiz+5,vert+30],[95,20],"Addressed To:",Bebas)
-        self.textBoxAddrTo = self.createTextBox((horiz+120,vert+27),(212,25),"")
+        self.label_AddrTo = self.createLabel([horiz+5,vert+30],[180,20],"Addressed To:",Bebas)
+        self.textBoxAddrTo = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         
         vert+=33
-        self.label_CAddress = self.createLabel([horiz+5,vert+30],[95,20],"Client Address:",Bebas)
-        self.textBoxCAddress = self.createTextBox((horiz+120,vert+27),(212,25),"")
+        self.label_CAddress = self.createLabel([horiz+5,vert+30],[180,20],"Client Address:",Bebas)
+        self.textBoxCAddress = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         vert+=33
-        self.label_AName = self.createLabel([horiz+5,vert+30],[90,20],"Agent Name:",Bebas)
-        self.textBoxAName = self.createTextBox((horiz+120,vert+27),(212,25),"")
+        self.label_AName = self.createLabel([horiz+5,vert+30],[180,20],"Agent Name:",Bebas)
+        self.textBoxAName = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         vert+=33
-        self.label_APost = self.createLabel([horiz+5,vert+30],[90,20],"Agent Post:",Bebas)
-        self.textBoxAPost = self.createTextBox((horiz+120,vert+27),(212,25),"")
+        self.label_APost = self.createLabel([horiz+5,vert+30],[180,20],"Agent Post:",Bebas)
+        self.textBoxAPost = self.createTextBox((horiz+180,vert+27),(230,25),"")
 
         vert+=33
-        self.label_AMobile = self.createLabel([horiz+5,vert+30],[90,20],"Agent Ph No.:",Bebas)
-        self.textBoxAMobile = self.createTextBox((horiz+120,vert+27),(212,25),"")
+        self.label_AMobile = self.createLabel([horiz+5,vert+30],[180,20],"Agent Ph No.:",Bebas)
+        self.textBoxAMobile = self.createTextBox((horiz+180,vert+27),(230,25),"")
         self.textBoxAMobile.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[- \d]+")))
 
 
         vert+=33
-        self.label_Dte = self.createLabel((horiz+5,vert+30),(90,20),"Date:",Bebas)
+        self.label_Dte = self.createLabel((horiz+5,vert+30),(180,20),"Date:",Bebas)
         self.dateLineEdit =QtGui.QDateEdit(now.today(),self)
-        self.dateLineEdit.move(horiz+120,vert+27)
+        self.dateLineEdit.move(horiz+180,vert+27)
         self.dateLineEdit.setCalendarPopup(True)
         self.dateLineEdit.setDisplayFormat("MMMM d, yyyy")
-        self.dateLineEdit.resize(212,25)
+        self.dateLineEdit.resize(230,25)
 
         vert+=33
-        self.label_OrdTy = self.createLabel((horiz+5,vert+30),(90,20),"Order Type:",Bebas)
-        self.combo_OrdTy=self.createCombobox((horiz+120,vert+27),(212,27),["AAC Slabs","Blocks","Lintel","Wall Panels"])
+        self.label_OrdTy = self.createLabel((horiz+5,vert+30),(180,20),"Order Type:",Bebas)
+        self.combo_OrdTy=self.createCombobox((horiz+180,vert+27),(230,27),["AAC Slabs","Blocks","Lintel","Wall Panels"])
 
 
         vert+=33
-        self.label_Rate = self.createLabel([horiz+5,vert+30],[95,20],"Rate per cm:",Bebas)
-        self.textBoxRate = self.createTextBox((horiz+120,vert+27),(105,25),"") 
+        self.label_Rate = self.createLabel([horiz+5,vert+30],[180,20],"Rate per cm:",Bebas)
+        self.textBoxRate = self.createTextBox((horiz+180,vert+27),(105,25),"") 
         self.textBoxRate.setText("0")
-        self.label_Rs = self.createLabel([horiz+195,vert+29],[35,20],"INR",Bebas)
+        self.label_Rs = self.createLabel([horiz+245,vert+29],[35,20],"INR",Bebas)
         self.textBoxRate.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[\d]{,8}\.[\d]{,2}")))
-        self.combo_GST= self.createCombobox((horiz+267,vert+26),(65,27),["CGST","IGST"])
-        self.label_GST = self.createLabel([horiz+235,vert+29],[30,20],"GST",BebasSmall)
+        self.combo_GST= self.createCombobox((horiz+345,vert+26),(65,27),["CGST","IGST"])
+        self.label_GST = self.createLabel([horiz+300,vert+29],[40,20],"GST",BebasSmall)
 
 
         vert+=38
-        self.label_Trans = self.createLabel((horiz+5,vert+30),(165,20),"Transportion Included:",Bebas)
+        self.label_Trans = self.createLabel((horiz+5,vert+30),(250,20),"Transportion Included:",Bebas)
         self.chk_box_Trans = QtGui.QCheckBox(self,"")
         self.chk_box_Trans.setChecked(True)
-        self.chk_box_Trans.move(horiz+170,vert+30)
+        self.chk_box_Trans.move(horiz+260,vert+30)
         self.chk_box_Trans.resize(20,20)
         self.chk_box_Trans.setStyle(QtGui.QStyleFactory.create("Cleanlooks"))
         self.chk_box_Trans.setStyleSheet("QCheckBox::indicator { width: 20px; height: 20px;} border-radius: 10px;")
         self.chk_box_Trans.stateChanged.connect(self.transport)
 
-        self.textBoxTransAmount = self.createTextBox((horiz+215,vert+27),(95,25),"")
+        self.textBoxTransAmount = self.createTextBox((horiz+265,vert+27),(95,25),"")
         self.textBoxTransAmount.setText("0")
-        self.label_TransInr = self.createLabel((horiz+280,vert+29),(100,20),"INR",Bebas) 
-        self.label_TransAm = self.createLabel((horiz+320,vert+29),(100,20),"Amt",Bebas) 
+        self.label_TransInr = self.createLabel((horiz+330,vert+29),(100,20),"INR",Bebas) 
+        self.label_TransAm = self.createLabel((horiz+380,vert+29),(100,20),"Amt",Bebas) 
         self.textBoxTransAmount.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp("[\d]{,7}\.[\d]{,2}")))
 
 
@@ -125,13 +125,13 @@ class FormOne(QtGui.QWidget):
             self.label_TransAm.show()
 
 
-        vert+=50
-        self.minimizeButton = self.createButton("Generate PDF",(horiz+70,vert+33),(50,30),lambda:self.genPDF(True),"color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 80px;background-color: rgb(255, 255,255);")
-        self.minimizeButton = self.createButton("Generate Print",(horiz+180,vert+33),(50,30),lambda:self.genPDF(False),"color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 80px;background-color: rgb(255, 255,255);")
+        vert+=60
+        self.minimizeButton = self.createButton("Generate PDF",(horiz+60,vert+33),(130,30),lambda:self.genPDF(True),"color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 80px;background-color: rgb(255, 255,255);")
+        self.minimizeButton = self.createButton("Generate Print",(horiz+240,vert+33),(130,30),lambda:self.genPDF(False),"color: #000;border: 2px solid #555;border-radius: 5px;padding: 5px;min-width: 80px;background-color: rgb(255, 255,255);")
         
-        self.minimizeButton = self.createButton("",(360, 26),(15,5),self.minimizeWindow,"background-color: black")
-        self.exitButton = self.createButton("",(330, 21),(15,15),self.closeUI,"background-color:  rgb(239,239,239)")
-        self.exitButton.setIcon(QtGui.QIcon('57165-cross-sign.png'))
+        self.minimizeButton = self.createButton("",(440, 36),(17,5),self.minimizeWindow,"background-color: black")
+        self.exitButton = self.createButton("",(405, 31),(17,17),self.closeUI,"background-color:  rgb(239,239,239)")
+        self.exitButton.setIcon(QtGui.QIcon("Images/57165-cross-sign.png"))
         self.exitButton.setIconSize(QtCore.QSize(19,19))
         self.exitButton.setFlat(True)
 
@@ -143,8 +143,8 @@ class FormOne(QtGui.QWidget):
         self.getO=""
 
 
-        self.setMinimumSize(410, 580)
-        self.setMaximumSize(410, 580)
+        self.setMinimumSize(495, 640)
+        self.setMaximumSize(495, 640)
 
     def genPDF(self,isPrint):
 
@@ -292,9 +292,9 @@ class BlocksOrder(QtGui.QWidget):
         # self.isPrint=isPrint
 
         # fonts
-        QtGui.QFontDatabase.addApplicationFont('Fonts\Alwyn Bold.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/Alwyn Bold.ttf')
         Alwyn = QtGui.QFont("Alwyn Bold", 23) 
-        QtGui.QFontDatabase.addApplicationFont('Fonts\BebasNeue.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/BebasNeue.ttf')
         Bebas = QtGui.QFont("BebasNeue", 13) 
 
         # make the window frameless
@@ -330,7 +330,7 @@ class BlocksOrder(QtGui.QWidget):
                          QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
 
         self.exitButton = self.createButton("",(315, 21),(15,15),self.closeUI,"background-color:  rgb(239,239,239)")
-        self.exitButton.setIcon(QtGui.QIcon('57165-cross-sign.png'))
+        self.exitButton.setIcon(QtGui.QIcon("Images/57165-cross-sign.png"))
         self.exitButton.setIconSize(QtCore.QSize(19,19))
         self.exitButton.setFlat(True)
 
@@ -434,12 +434,12 @@ class getOrder(QtGui.QWidget):
         # self.isPrint=isPrint
 
         # fonts
-        QtGui.QFontDatabase.addApplicationFont('Fonts\Alwyn Bold.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/Alwyn Bold.ttf')
         Alwyn = QtGui.QFont("Alwyn Bold", 17) 
-        QtGui.QFontDatabase.addApplicationFont('Fonts\BebasNeue.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/BebasNeue.ttf')
         Bebas = QtGui.QFont("BebasNeue", 13) 
         BebasSmall = QtGui.QFont("BebasNeue", 10) 
-        QtGui.QFontDatabase.addApplicationFont('Fonts\Queen of Camelot.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/Queen of Camelot.ttf')
         Queen = QtGui.QFont("Queen of Camelot", 8) 
 
         # make the window frameless
@@ -503,7 +503,7 @@ class getOrder(QtGui.QWidget):
                          QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
 
         self.exitButton = self.createButton("",(340, 21),(15,15),self.closeUI,"background-color:  rgb(239,239,239)")
-        self.exitButton.setIcon(QtGui.QIcon('57165-cross-sign.png'))
+        self.exitButton.setIcon(QtGui.QIcon("Images/57165-cross-sign.png"))
         self.exitButton.setIconSize(QtCore.QSize(19,19))
         self.exitButton.setFlat(True)
 
@@ -610,9 +610,9 @@ class MsgBox(QtGui.QWidget):
         vert=45
 
         # fonts
-        QtGui.QFontDatabase.addApplicationFont('Fonts\Queen of Camelot.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/Queen of Camelot.ttf')
         Queen = QtGui.QFont("Queen of Camelot", 11) 
-        QtGui.QFontDatabase.addApplicationFont('Fonts\BebasNeue.ttf')
+        QtGui.QFontDatabase.addApplicationFont('Fonts/BebasNeue.ttf')
         Bebas = QtGui.QFont("BebasNeue", 13) 
 
         # make the window frameless
