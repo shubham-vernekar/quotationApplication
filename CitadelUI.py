@@ -22,13 +22,15 @@ def rounder(num):
 
 
 class FormOne(QtGui.QWidget):
+    """ First Page of the Application """
     def __init__(self, parent=None):
         super(FormOne, self).__init__(parent)
         horiz = 35
         vert = 65
         now = datetime.now()
         self.basecolor = "efefef"
-        # fonts
+
+        # Initialize fonts
         QtGui.QFontDatabase.addApplicationFont('Fonts/Alwyn Bold.ttf')
         Alwyn = QtGui.QFont("Alwyn Bold", 23)
         QtGui.QFontDatabase.addApplicationFont('Fonts/MavenProBold.otf')
@@ -36,10 +38,9 @@ class FormOne(QtGui.QWidget):
         QtGui.QFontDatabase.addApplicationFont('Fonts/MavenProBold.otf')
         BebasSmall = QtGui.QFont("MavenProBold", 9)
 
-        # make the window frameless
+        # Make the window frameless
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
         self.backgroundColor = hex2QColor(self.basecolor)
         self.foregroundColor = hex2QColor("333333")
         self.borderRadius = 10
@@ -48,6 +49,7 @@ class FormOne(QtGui.QWidget):
         self.__mousePressPos = None
         self.__mouseMovePos = None
 
+        # Define all the elements in the page
         self.label_Title = self.createLabel(
             [horiz+10, vert], [400, 80], "Citadel Ecobuild", Alwyn)
 
@@ -175,6 +177,7 @@ class FormOne(QtGui.QWidget):
         self.setMaximumSize(495, 640)
 
     def genPDF(self, isPrint):
+        """ Generate PDF file """
 
         inData = {}
         inData['Client Name'] = self.textBoxCName.text()
@@ -213,17 +216,19 @@ class FormOne(QtGui.QWidget):
         self.close()
 
     def createButton(self, text, pos, size, function, css=""):
+        """ Wrapper to create a button """
+
         Button = QtGui.QPushButton(text, self)  # Define button
-        # Position the button
-        Button.move(pos[0], pos[1])
-        Button.clicked.connect(function)
-        Button.resize(size[0], size[1])
-        Button.setStyleSheet(css)
+        Button.move(pos[0], pos[1])  # Define position
+        Button.clicked.connect(function)    # Define on click event
+        Button.resize(size[0], size[1]) # Define size
+        Button.setStyleSheet(css)  # Define CSS 
         return Button
 
     def createTextBox(self, pos, size, texte="", key="", data=[]):
-        textBox = QtGui.QLineEdit(self)
+        """ Wrapper to create a text box """
 
+        textBox = QtGui.QLineEdit(self)
         if key == "comp":
             completer = CustomQCompleter()
             textBox.setCompleter(completer)
@@ -239,6 +244,8 @@ class FormOne(QtGui.QWidget):
         return textBox
 
     def createLabel(self, pos, size, data, font):
+        """ Wrapper to create a text label """
+
         label = QtGui.QLabel(data, self)
         label.resize(size[0], size[1])
         label.setFont(font)
@@ -246,6 +253,8 @@ class FormOne(QtGui.QWidget):
         return label
 
     def createCombobox(self, pos, size, data, key=""):
+        """ Wrapper to create a combo box element """
+
         comboBox = QtGui.QComboBox(self)
         if key == "comp":
             comboBox.setEditable(True)
@@ -300,28 +309,23 @@ class FormOne(QtGui.QWidget):
                 self.__mousePressPos = None
         super(FormOne, self).mouseReleaseEvent(event)
 
-        # close event
-        # if event.button() == QtCore.Qt.RightButton:
-        #     QtGui.qApp.exit()
-
     def minimizeWindow(self):
         self.showNormal()
         self.showMinimized()
 
     def keyPressEvent(self, e):      # In the event that a key is pressed
         if e.key() == QtCore.Qt.Key_Escape:   # If key pressed is Excape Key
-            # self.minimizeWindow()
             self.close()
 
 
 class BlocksOrder(QtGui.QWidget):
+    """ Form to get additional information for block orders """
+
     def __init__(self, inData, isPrint, parent=None):
         super(BlocksOrder, self).__init__(parent)
         horiz = 44
         vert = 40
         self.basecolor = "efefef"
-        # self.inData=inData
-        # self.isPrint=isPrint
 
         # fonts
         QtGui.QFontDatabase.addApplicationFont('Fonts/Alwyn Bold.ttf')
@@ -470,13 +474,13 @@ class BlocksOrder(QtGui.QWidget):
 
 
 class getOrder(QtGui.QWidget):
+    """ Form to get more order details """
+
     def __init__(self, categ, inData, isPrint, parent=None):
         super(getOrder, self).__init__(parent)
         horiz = 44
         vert = 50
         self.basecolor = "efefef"
-        # self.inData=inData
-        # self.isPrint=isPrint
 
         # fonts
         QtGui.QFontDatabase.addApplicationFont('Fonts/Alwyn Bold.ttf')
@@ -662,6 +666,7 @@ class getOrder(QtGui.QWidget):
 
 
 class MsgBox(QtGui.QWidget):
+    """ Form to display messages """
     def __init__(self, color, text, parent=None):
         super(MsgBox, self).__init__(parent)
         horiz = 44

@@ -10,8 +10,10 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.platypus import ListFlowable, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 
+""" This file stores various functions that deal with creating PDF documents """
 
 def createBullet(c, text, x, y, font, size, indent=0):
+    """ Function to create a Bullet Point """
     styles = getSampleStyleSheet()
     style = styles["Normal"]
     if indent != 0:
@@ -33,12 +35,16 @@ def pad(key, size):
 
 
 def createLine(c, x, y, width, size, color):
+    """ Function to draw a Line """
+
     c.setLineWidth(size)
     c.setStrokeColor((HexColor(color)))
     c.line(x, y, x+width, y)
 
 
 def drawTable(c, x, y, data, Textcolor, fontSize, dx=0.6, total=True):
+    """ Function to export data in a table """
+
     pading = [max([len(el[index]) for el in data])
               for index in xrange(len(data[0]))]
     pading = [pading[index]+8 if index ==
@@ -69,6 +75,8 @@ def drawTable(c, x, y, data, Textcolor, fontSize, dx=0.6, total=True):
 
 
 def createTextBox(canvas, data, horiz, vert, color, font, size):
+    """ Function to draw text """
+
     textobject = canvas.beginText()
     textobject.setTextOrigin(horiz, vert)
     textobject.setFont(font, size)
@@ -82,6 +90,8 @@ def createTextBox(canvas, data, horiz, vert, color, font, size):
 
 
 def createBarGraph(c, x, y, data, labels, colors, barnames, minvalue, maxvalue, step, h=75, w=300, dy=0):
+    """ Function to draw a Bar Graph """
+
     drawing = Drawing(400, 200)
     legend = Legend()
 
@@ -136,6 +146,8 @@ def createBarGraph(c, x, y, data, labels, colors, barnames, minvalue, maxvalue, 
 
 
 def getPieChart(c, x, y, data, data_suff, labels, colors, fsize=8.5, radius=0.60, legdx=180, legdy=100):
+    """ Function to draw a Pie Chart """
+
     d = Drawing(200, 200)
     legend = Legend()
     legend.columnMaximum = 99
@@ -157,7 +169,6 @@ def getPieChart(c, x, y, data, data_suff, labels, colors, fsize=8.5, radius=0.60
     for k, i in enumerate(colors):
         legendList.append((HexColor(i), labels[k]))
 
-    # [(HexColor(colors[0]), ('BP')), (HexColor(colors[1]), ('BT'))]
     legend.colorNamePairs = legendList
 
     pc3 = Pie()

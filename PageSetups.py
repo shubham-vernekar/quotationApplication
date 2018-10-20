@@ -6,6 +6,8 @@ def ceil(key):
 
 
 def getCost(dat, rateBlocks, key="Lintel"):
+    """ This function calculates the total cost of the product based on predefined formula """
+
     x = dat[:]
 
     if key == "Lintel":
@@ -24,6 +26,8 @@ def getCost(dat, rateBlocks, key="Lintel"):
 
 
 def getData(inData):
+    """ This function calculates the data to be filled in the table in the PDF output """
+
     rateBlocks = inData['Rate']
     types = inData['Type']
     rqdata = inData['Required Quantity']
